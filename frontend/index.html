@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <meta charset="utf-8">
-    <title>Multi-Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-User Chatbot</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="chatbox"></div>
-    <input type="text" id="user_input" placeholder="Schreib etwas...">
-    <button onclick="sendMessage()">Senden</button>
-
-    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
-    <script src="script.js"></script>
+<div class="chat-container">
+  <div id="chat-box" class="chat-box"></div>
+  <input type="text" id="user-input" placeholder="Schreib deine Nachricht..." />
+  <button onclick="sendMessage()">Senden</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

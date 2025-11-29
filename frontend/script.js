@@ -1,37 +1,18 @@
-body {
-    font-family: Arial;
-    background: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-}
+async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const message = input.value;
+    if(!message) return;
 
-#chatbox {
-    height: 400px;
-    width: 500px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background: white;
-    margin-bottom: 10px;
-}
+    chatBox.innerHTML += `<div class="user-msg"><b>Du:</b> ${message}</div>`;
+    input.value = "";
 
-.message {
-    margin: 5px 0;
-    padding: 5px 10px;
-    border-radius: 5px;
-    max-width: 80%;
-}
-
-.user {
-    background: #cce5ff;
-    align-self: flex-end;
-    text-align: right;
-}
-
-.bot {
-    background: #d4edda;
-    align-self: flex-start;
-    text-align: left;
+    const response = await fetch("http://localhost:8000/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({msg: message})
+    });
+    const data = await response.json();
+    chatBox.innerHTML += `<div class="bot-msg"><b>Bot:</b> ${data.reply}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
