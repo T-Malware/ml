@@ -3,3 +3,7 @@ scikit-learn
 fastapi
 uvicorn
 numpy
+python-multipart
+jinja2
+flask
+fastapi[all]

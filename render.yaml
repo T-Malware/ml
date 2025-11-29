@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: chatbot-backend
+    env: python
+    region: oregon  # oder eu-west, je nachdem
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    autoDeploy: true
+    repo: https://github.com/dein-github-username/chatbot-project
+    branch: main
